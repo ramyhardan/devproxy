@@ -1,0 +1,10 @@
+providers:
+  docker:
+    defaultRule: "Host(`{{ trimPrefix `/` .Name }}.localhost`)"
+    exposedbydefault: false
+
+api:
+  insecure: true
+
+log:
+  level: DEBUG
