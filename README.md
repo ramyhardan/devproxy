@@ -16,4 +16,4 @@ docker-compose up
 
 ## Usage Example
 
-See [README.md in `example` folder](example/README.md)
+See [README.md in `example` folder](example/)
