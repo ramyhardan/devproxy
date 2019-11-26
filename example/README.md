@@ -12,6 +12,8 @@ We split the `docker-compose.yml` into
 
 [docker-compose.dev.yml](docker-compose.dev.yml) contains the interesting parts:
 
+Include Traefik's network:
+
 ```
 networks:
   proxy:
@@ -19,7 +21,7 @@ networks:
       name: devproxy_default
 ```
 
-Thsi includes Traefik's network
+Make Traefik's network and the default network available to the `web` service:
 
 ```
 services:
@@ -29,7 +31,7 @@ services:
       - default
 ```
 
-Next we make Traefik's network and the default network available to the `web` service.
+Configure Traefik with labels. Make sure that the Traefik service name (`devproxy-example-web`) is unique across all services of all your projects that you proxy with Traefik:
 
 ```
 services:
@@ -43,9 +45,7 @@ services:
       - "traefik.http.services.devproxy-example-web.loadbalancer.server.port=80"
 ```
 
-Now we configure Traefik with labels. Make sure that the Traefik service name (`devproxy-example-web`) is unique across all services of all your projects that you proxy with Traefik.
-
 ## Starting The Services
 
-`docker-compose -f docker-compose.base.yml -f docker-compose.dev.yml up` Starts the services and registers `web` with Traefik.
+`docker-compose -f docker-compose.base.yml -f docker-compose.dev.yml up` starts the services and registers `web` with Traefik.
 Then it's available at http://web-example.localhost/
