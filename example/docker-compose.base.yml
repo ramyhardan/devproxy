@@ -1,0 +1,18 @@
+version: "3.5"
+
+services:
+  web:
+    image: whoami
+    depends_on:
+      - db
+    expose:
+      - "80"
+
+  db:
+    image: postgres:10
+    expose:
+      - "5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=someuser
+      - POSTGRES_PASSWORD=s3cr3t
