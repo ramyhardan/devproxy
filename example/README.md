@@ -44,3 +44,8 @@ services:
 ```
 
 Now we configure Traefik with labels. Make sure that the Traefik service name (`devproxy-example-web`) is unique across all services of all your projects that you proxy with Traefik.
+
+## Starting The Services
+
+`docker-compose -f docker-compose.base.yml -f docker-compose.dev.yml up` Starts the services and registers `web` with Traefik.
+Then it's available at http://web-example.localhost/

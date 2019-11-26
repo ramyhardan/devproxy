@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   web:
-    image: whoami
+    image: containous/whoami
     depends_on:
       - db
     expose:
